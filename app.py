@@ -52,7 +52,8 @@ if st.button("Generate Report") and fund_input:
                         "Evaluate each parameter against typical financial benchmarks to assign a 🟢, 🟡, or 🔴 indicator."
                     ],
                     #response_model=MutualFundReport, # Forces structured JSON matching our Pydantic schema
-                    markdown=False
+                    markdown=False,
+                    add_history_to_context=False
                 )
 
 
