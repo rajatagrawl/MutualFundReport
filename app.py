@@ -67,11 +67,11 @@ if st.button("Generate Report") and fund_input:
                 report_data = response.content
 
                 # SAFEST GUARD: If Agno returned a string representation of the JSON instead of the object
-                # if isinstance(report_data, str):
-                #     import json
-                #     # Parse string to dict, then unpack into your Pydantic model
-                #     data_dict = json.loads(report_data)
-                #     report_data = MutualFundReport(**data_dict)
+                if isinstance(report_data, str):
+                    import json
+                    # Parse string to dict, then unpack into your Pydantic model
+                    data_dict = json.loads(report_data)
+                    report_data = MutualFundReport(**data_dict)
 
               
                 # 4. Render the UI cleanly from Structured Data
