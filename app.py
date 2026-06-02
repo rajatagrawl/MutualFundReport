@@ -40,7 +40,8 @@ if st.button("Generate Report") and fund_input:
                 # 2. Configure the Agent with Web Tools and Gemini
                 analyzer_agent = Agent(
                     model=Gemini(id="gemini-2.5-flash", api_key=gemini_key),
-                    tools=[YFinanceTools(), DuckDuckGoTools()],
+                    tools=[YFinanceTools(stock_price=True, analytical_data=True), DuckDuckGoTools(search=True)],
+                    # Instead of tools=[YFinanceTools(), DuckDuckGoTools()]                  
                     instructions=[
                         "You are a Senior Mutual Fund Research Analyst.",
                         "Search web data and Yahoo Finance to fetch data for the requested fund.",
@@ -51,7 +52,7 @@ if st.button("Generate Report") and fund_input:
                         "Evaluate each parameter against typical financial benchmarks to assign a 🟢, 🟡, or 🔴 indicator."
                     ],
                     #response_model=MutualFundReport, # Forces structured JSON matching our Pydantic schema
-                    markdown=True
+                    markdown=False
                 )
 
 
