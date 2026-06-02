@@ -39,7 +39,7 @@ if st.button("Generate Report") and fund_input:
             try:
                 # 2. Configure the Agent with Web Tools and Gemini
                 analyzer_agent = Agent(
-                    model=Gemini(id="gemini-2.5-flash", api_key=gemini_key),
+                    model=Gemini(id="gemini-1.5-flash", api_key=gemini_key),
                     tools=[YFinanceTools(), DuckDuckGoTools()], 
                     # Instead of tools=[YFinanceTools(), DuckDuckGoTools()]                  
                     instructions=[
