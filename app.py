@@ -67,26 +67,26 @@ if st.button("Generate Report") and fund_input:
                 report_data = response.content
 
                 # SAFEST GUARD: If Agno returned a string representation of the JSON instead of the object
-                if isinstance(report_data, str):
-                    import json
-                    # Parse string to dict, then unpack into your Pydantic model
-                    data_dict = json.loads(report_data)
-                    report_data = MutualFundReport(**data_dict)
+                # if isinstance(report_data, str):
+                #     import json
+                #     # Parse string to dict, then unpack into your Pydantic model
+                #     data_dict = json.loads(report_data)
+                #     report_data = MutualFundReport(**data_dict)
 
 
                 # REPLACES YOUR OLD SAFEST GUARD BLOCK
-                # if isinstance(report_data, str):
-                #     import json
+                if isinstance(report_data, str):
+                    import json
                     
-                #     # Strip away accidental markdown code block wrappers if present
-                #     cleaned_data = report_data.strip()
-                #     if cleaned_data.startswith("```json"):
-                #         cleaned_data = cleaned_data.split("```json")[1].split("```")[0].strip()
-                #     elif cleaned_data.startswith("```"):
-                #         cleaned_data = cleaned_data.split("```")[1].split("```")[0].strip()
+                    # Strip away accidental markdown code block wrappers if present
+                    cleaned_data = report_data.strip()
+                    if cleaned_data.startswith("```json"):
+                        cleaned_data = cleaned_data.split("```json")[1].split("```")[0].strip()
+                    elif cleaned_data.startswith("```"):
+                        cleaned_data = cleaned_data.split("```")[1].split("```")[0].strip()
                         
-                #     data_dict = json.loads(cleaned_data)
-                #     report_data = MutualFundReport(**data_dict)
+                    data_dict = json.loads(cleaned_data)
+                    report_data = MutualFundReport(**data_dict)
 
               
                 # 4. Render the UI cleanly from Structured Data
