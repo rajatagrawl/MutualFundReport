@@ -50,13 +50,21 @@ if st.button("Generate Report") and fund_input:
                         "9. Portfolio Turnover Rate, 10. Standard Deviation.",
                         "Evaluate each parameter against typical financial benchmarks to assign a 🟢, 🟡, or 🔴 indicator."
                     ],
-                    response_model=MutualFundReport, # Forces structured JSON matching our Pydantic schema
+                    #response_model=MutualFundReport, # Forces structured JSON matching our Pydantic schema
                     markdown=True
                 )
 
+
+                # 3. Pass the response_model directly into the run method
+                # (Check if your version of Agno supports this override)
+                response = analyzer_agent.run(
+                    f"Analyze the following mutual fund: {fund_input}",
+                    response_model=MutualFundReport 
+                )
+
                 # 3. Fire the Agent Run
-                response = analyzer_agent.run(f"Analyze the following mutual fund: {fund_input}")
-                report_data = response.content
+                # response = analyzer_agent.run(f"Analyze the following mutual fund: {fund_input}")
+                # report_data = response.content
 
                 # 4. Render the UI cleanly from Structured Data
                 st.header(f"📈 Performance Report: {report_data.fund_name}")
