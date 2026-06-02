@@ -2,7 +2,7 @@ import streamlit as st
 from agno.agent import Agent
 from agno.models.google import Gemini
 from agno.tools.yfinance import YFinanceTools
-from agno.tools.duckduckgo import DuckDuckGo
+from agno.tools.duckduckgo import DuckDuckGoTools
 from pydantic import BaseModel, Field
 from typing import List
 
@@ -40,7 +40,7 @@ if st.button("Generate Report") and fund_input:
                 # 2. Configure the Agent with Web Tools and Gemini
                 analyzer_agent = Agent(
                     model=Gemini(id="gemini-2.5-flash", api_key=gemini_key),
-                    tools=[YFinanceTools(stock_fundamentals=True), DuckDuckGo()],
+                    tools=[YFinanceTools(stock_fundamentals=True), DuckDuckGoTools()],
                     instructions=[
                         "You are a Senior Mutual Fund Research Analyst.",
                         "Search web data and Yahoo Finance to fetch data for the requested fund.",
