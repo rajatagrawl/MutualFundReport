@@ -107,4 +107,8 @@ if st.button("Generate Report") and fund_input:
                         st.markdown("---")
 
             except Exception as e:
-                st.error(f"An error occurred: {str(e)}")
+                error_msg = str(e)
+                if "429" in error_msg or "ResourceExhausted" in error_msg:
+                    st.error("🛑 **Gemini API Rate Limit Hit (Error 429):** You've made too many requests too quickly. Please wait about 20–30 seconds and try clicking 'Generate Report' again.")
+                else:
+                    st.error(f"An unexpected error occurred: {error_msg}")
