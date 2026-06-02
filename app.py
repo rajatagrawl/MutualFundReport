@@ -44,8 +44,9 @@ if st.button("Generate Report") and fund_input:
                     # Instead of tools=[YFinanceTools(), DuckDuckGoTools()]                  
                     instructions=[
                         "You are a Senior Mutual Fund Research Analyst.",
-                        "Search web data and Yahoo Finance to fetch data for the requested fund.",
-                        "Provide a strict structured output mapping EXACTLY 10 financial metrics:",
+                        "CRITICAL: When using DuckDuckGo search, look specifically for the exact parameters needed (e.g., 'Parag Parikh Flexi Cap Expense Ratio').",
+                        "Only execute a maximum of 2 search queries total to conserve performance tokens.",
+                        "Provide a strict structured output mapping EXACTLY 10 financial metrics..."
                         "1. Net Asset Value (NAV), 2. Expense Ratio, 3. Assets Under Management (AUM), "
                         "4. Sharpe Ratio, 5. Alpha, 6. Beta, 7. 3-Year Return CAGR, 8. 5-Year Return CAGR, "
                         "9. Portfolio Turnover Rate, 10. Standard Deviation.",
