@@ -64,7 +64,7 @@ if st.button("Generate Report") and fund_input:
 
                 # 3. Fire the Agent Run
                 # response = analyzer_agent.run(f"Analyze the following mutual fund: {fund_input}")
-                # report_data = response.content
+                report_data = response.content
 
                 # 4. Render the UI cleanly from Structured Data
                 st.header(f"📈 Performance Report: {report_data.fund_name}")
