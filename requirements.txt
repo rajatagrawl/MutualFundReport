@@ -1,0 +1,5 @@
+agno
+yfinance
+duckduckgo-search
+streamlit
+pydantic
