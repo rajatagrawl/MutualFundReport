@@ -40,7 +40,7 @@ if st.button("Generate Report") and fund_input:
                 # 2. Configure the Agent with Web Tools and Gemini
                 analyzer_agent = Agent(
                     model=Gemini(id="gemini-2.5-flash", api_key=gemini_key),
-                    tools=[YFinanceTools(include_tools=["get_current_stock_price","get_key_financial_ratios","get_historical_stock_prices"]), DuckDuckGoTools(include_tools=["search"])], 
+                    tools=[YFinanceTools(include_tools=["get_current_stock_price"]), DuckDuckGoTools(include_tools=["search"])], 
                     # Instead of tools=[YFinanceTools(), DuckDuckGoTools()]                  
                     instructions=[
                         "You are a Senior Mutual Fund Research Analyst.",
