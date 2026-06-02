@@ -4,3 +4,4 @@ duckduckgo-search
 streamlit
 pydantic
 google-genai
+ddgs
